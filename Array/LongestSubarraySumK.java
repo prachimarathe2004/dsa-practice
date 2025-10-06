@@ -1,28 +1,23 @@
-import java.util.HashMap;
 
 public class LongestSubarraySumK {
-
     public static int maxSubArrayLen(int[] nums, int k) {
-        HashMap<Integer, Integer> map = new HashMap<>();
-        int sum = 0;
+        int n = nums.length;
         int maxLen = 0;
 
-        for (int i = 0; i < nums.length; i++) {
-            sum += nums[i];
+        // Check every subarray starting at index 'start'
+        for (int start = 0; start < n; start++) {
+            int sum = 0; // Reset sum for each new start
 
-            // Case 1: If entire sum equals k
-            if (sum == k) {
-                maxLen = i + 1;
-            }
+            // Extend subarray to index 'end'
+            for (int end = start; end < n; end++) {
+                sum += nums[end]; // Add current element
 
-            // Case 2: If sum - k is already seen
-            if (map.containsKey(sum - k)) {
-                maxLen = Math.max(maxLen, i - map.get(sum - k));
-            }
-
-            // Store first occurrence of a prefix sum
-            if (!map.containsKey(sum)) {
-                map.put(sum, i);
+                if (sum == k) { // If subarray sum equals k
+                    int len = end - start + 1;
+                    if (len > maxLen) {
+                        maxLen = len; // Update max length
+                    }
+                }
             }
         }
 
@@ -30,9 +25,17 @@ public class LongestSubarraySumK {
     }
 
     public static void main(String[] args) {
-        int[] nums = {1, -1, 5, -2, 3};
-        int k = 3;
-        int result = maxSubArrayLen(nums, k);
-        System.out.println("Length of the longest subarray: " + result);
+        int[] nums1 = {10, 5, 2, 7, 1, 9};
+        int k1 = 15;
+        System.out.println("Longest subarray length: " + maxSubArrayLen(nums1, k1));
+
+        int[] nums2 = {-3, 2, 1};
+        int k2 = 6;
+        System.out.println("Longest subarray length: " + maxSubArrayLen(nums2, k2));
+
+        int[] nums3 = {1, -1, 5, -2, 3};
+        int k3 = 3;
+        System.out.println("Longest subarray length: " + maxSubArrayLen(nums3, k3));
     }
 }
+
