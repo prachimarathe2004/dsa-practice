@@ -1,21 +1,24 @@
 public class PalindromeCheck {
-    public static void main(String[] args) {
-        String s = "madam";
+public static void main(String[] args) {
+    String s="madaam";
 
-        int left = 0;
-        int right = s.length() - 1;
+    int left=0;
+    int right=s.length()-1;
 
-        boolean isPalindrome = true;
+    boolean palindrome=true;
 
-        while (left < right) {
-            if (s.charAt(left) != s.charAt(right)) {
-                isPalindrome = false;
-                break;
-            }
-            left++;
-            right--;
+    while(left<right){
+        if(s.charAt(left) != s.charAt(right)){
+            palindrome=false;
+            break;
         }
-
-        System.out.println("Is Palindrome: " + isPalindrome);
+        left++;
+        right--;
     }
+   if(palindrome){
+     System.out.println("string is palindrome " );
+   }else{
+ System.out.println("string is not palindrome");
+   }
+}
 }
