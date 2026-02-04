@@ -1,12 +1,9 @@
+
 import java.util.HashMap;
 
 public class TwoSum{
-    public static void main(String[] args) {
-        int[]arr={2,7,8,4};
-
-        int target=11;
-
-        HashMap<Integer,Integer> map = new HashMap<>();
+    public static void TwoSum(int[]arr,int target){
+         HashMap<Integer,Integer> map = new HashMap<>();
 
         for(int i=0;i<arr.length;i++){
             int CurrentNumber=arr[i];
@@ -19,8 +16,17 @@ public class TwoSum{
             
             map.put(CurrentNumber,i);
         }
+
+    }
+    public static void main(String[] args) {
+        int[]arr={2,7,8,4};
+
+        int target=11;
+        TwoSum(arr, target);
+
+       
       
-        System.out.println("No pair found");
+      
     }
 
 }
